@@ -1,10 +1,8 @@
 # TEAM AUDIOBOTS: Predicting Music Genres
 
-Historically, songs have been categorized into genres not just for commercial purposes but also to enhance the listening experience and foster cultural exchange through music. With the advent of Music Information Retrieval in the 1990s, researchers began using algorithms to analyze audio files, classifying music based on features like pitch, tempo, and timbre. The abundance of extractable signals from audio files and the rise of deep learning have made genre classification a popular and evolving field among data scientists. In response, we have developed a genre classification system that contributes to these ongoing advancements. 
+Our primary goal was to compare the performance of traditional machine learning models with more advanced deep learning models, thereby evaluating the effectiveness of these newer neural network architectures for music genre classification. 
 
-Our primary goal was to compare the performance of traditional machine learning models with more advanced deep learning models, thereby evaluating the effectiveness of these newer neural network solutions. 
-
-<!-- ## About Team Mahogany
+<!-- ## About Team Audiobots
 Team members: Aycan Katitas, Dylan Bates, Paul VanKoughnett, Muhammed Cifci, Soheyl Anbouhi, Johann Thiel
 -->
 
@@ -18,9 +16,11 @@ Team members: Aycan Katitas, Dylan Bates, Paul VanKoughnett, Muhammed Cifci, Soh
 
 ## Introduction
 
+Historically, songs have been categorized into genres not just for commercial purposes but also to enhance the listening experience and foster cultural exchange through music. With the advent of Music Information Retrieval in the 1990s, researchers began using algorithms to analyze audio files, classifying music based on features like pitch, tempo, and timbre. The abundance of extractable signals from audio files and the rise of deep learning have made genre classification a popular and evolving field among data scientists. In response, we have developed a genre classification system that contributes to these ongoing advancements. 
 
 ## Data Collection
 
+Finding a dataset to train genre classifiers was challenging due to licensing issues and low-quality audio files. We used two datasets: [GTZAN](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification) and [Free Music Archive (FMA)](https://github.com/mdeff/fma). GTZAN is a well-known dataset comprising 1,000 audio tracks, each 30 seconds long, distributed across 10 genres with 100 tracks each. FMA offers two subsets. FMA-small, a balanced dataset with 8,000 tracks of 30 seconds each across 8 genres, and FMA-medium, a larger, unbalanced dataset featuring 25,000 tracks across 16 genres. We initially developed and tested our algorithms on the GTZAN dataset and then moved onto bigger and more complex FMA datasets, using accuracy and F1 score as our evaluation metrics.
 
 ## Exploratory Data Analysis
 
@@ -78,7 +78,3 @@ A few notebooks of note:
 
 * [Audiobots_Spectrogram_Creation.ipynb](https://github.com/allispaul/audiobot/blob/main/EDA/Audiobots_Spectrogram_Creation.ipynb) - This is a Jupyter Notebook demonstrating how to load the GTZAN data set. It then creates both mel-spectrograms and log-spectrograms of size 224*224 to be input to Convolutional Neural Networks like [InceptionV3](https://huggingface.co/docs/timm/en/models/inception-v3) or [ResNet-34](https://huggingface.co/microsoft/resnet-34).
 * [Audiobots_Beyonce.ipynb](https://github.com/allispaul/audiobot/blob/main/models/Audiobots_Beyonce.ipynb) - Extracts features for an album stored locally (like Cowboy Carter). Predicts the genre of each song from the middle 30s of each track using three models pretrained on GTZAN: Whisper Small, DistilHuBERT, and Fleur. Finally, it ouputs csv files containing the logits and probabilities of each genre for further analysis.
-
-
-* [kaggle_next_day_wildfire_demo.ipynb](https://github.com/dwgb93/TEI_WildfireSpread/blob/main/notebooks/kaggle_next_day_wildfire_demo.ipynb) - This is a Jupyter Notebook demonstrating how to load and parse the data set. It was copied directly from the authors' [GitHub page](https://github.com/google-research/google-research/tree/master/simulation_research/next_day_wildfire_spread) and tweaked slightly to remove bugs.
-* [Wildfire_EDA.ipynb](https://github.com/dwgb93/TEI_WildfireSpread/blob/main/notebooks/Wildfire_EDA.ipynb) - Contains exploratory data analysis, including finding outliers (negative elevation/wind speed, absolute 0 temperature, etc.), and calculating properties of the data set (how much fire is there? how much data is missing?)
