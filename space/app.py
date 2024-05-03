@@ -43,9 +43,9 @@ def predict(audio):
 title = "🤖 🎵 Audiobot 🎹 ⚡"
 description = "<h2>♯ The superpowered music genre classifier ♭</h2>"
 article = """
-<p>🤖 This model is a version of <a href="https://huggingface.co/openai/whisper-medium">Whisper Medium</a>,
+<p>🤖 This model is a version of <a href="https://huggingface.co/openai/whisper-small">Whisper Small</a>,
 fine-tuned on the <a href="https://huggingface.co/datasets/marsyas/gtzan">GTZAN</a> dataset.</p>
-<p>🎹 It recognizes 10 genres: blues, classical, country, hip-hop, jazz, metal, pop, reggae, and rock.</p>
+<p>🎹 It recognizes 10 genres: blues, classical, country, disco, hip-hop, jazz, metal, pop, reggae, and rock.</p>
 <p>🎵 Upload a song or click one of the examples to try it out!</p>
 <p>⚡ Part of a project for the <a href="https://www.erdosinstitute.org/">Erdős Institute</a> Deep Learning bootcamp,
 by Dylan Bates, Muhammed Cifci, Aycan Katitas, Johann Thiel, Soheyl Anbouhi, and Paul VanKoughnett.</p>
