@@ -3,7 +3,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-from utils import DEVICE
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 ### Compression/decompression
 # This requires some explanation. Audio is frequently digitized as an int16 (x)
