@@ -29,7 +29,7 @@ Finding a dataset to train genre classifiers was challenging due to licensing is
 
 We began by extracting features from audio files and processing them through XGBoost and other classic machine learning algorithms. For deeper insights, we employed sophisticated deep learning techniques in three ways.
 
-First, we used a short-term memory model based on audio features. Second, we generated spectrograms, which are graphical representations of the frequency signals, and analyzed them with Convolutional Neural Networks (CNNs) for image classification. Third, we input raw audio into pretrained transformer models such as DistillHuBERT, Whisper, and Wav2vec, and a version of Google’s WaveNet convolutional architecture.
+First, we used a short-term memory model based on audio features. Second, we generated spectrograms, which are graphical representations of the frequency signals, and analyzed them with Convolutional Neural Networks (CNNs) for image classification. Third, we input raw audio into pretrained transformer models such as DistilHuBERT, Whisper, and Wav2vec, and a version of Google’s WaveNet convolutional architecture.
 
 We trained each of these models on the GTZAN dataset, report accuracy on the unseen test data. Due to the large variation in results, we took the models that performed best and retrained them on FMA Small and FMA Medium, performing model selection and hyperparameter optimization on the validation set.
 
@@ -43,14 +43,14 @@ We report the final accuracy and F1 scores on the test set for FMA Small and FMA
 | CNN - MFCC | 0.68 | 0.67 |
 | CNN - Spectrogram | 0.85 | 0.85 |
 | Wav2vec-base | 0.79 | 0.78 |
-| DistillHuBERT | 0.90 | 0.82 |
+| DistilHuBERT | 0.90 | 0.82 |
 | **XGBoost** | **0.92** | **0.92** |
 | **Whisper Small** | **0.92** | **0.92** |
 
 **FMA Small**
 | Model name/type | Acc. | F1  |
 |:--------:|:-------:|:------:|
-| DistillHuBERT | 0.58 | 0.64 |
+| DistilHuBERT | 0.58 | 0.64 |
 | Whisper Small | 0.61 | 0.60 |
 | **Whisper Medium** | **0.63** | **0.63** |
 | XGBoost | 0.55 | 0.54 |
