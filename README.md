@@ -24,6 +24,23 @@ Finding a dataset to train genre classifiers was challenging due to licensing is
 
 ## Exploratory Data Analysis
 
+We use the librosa package to extract a variety of features from each track, including Chroma, Tonnetz, MFCC, Spectral centroid, Spectral bandwidth, Spectral contrast, Spectral rolloff, RMS energy, and Zero-crossing rate. Each set of features can be calculated over the entire 30 second sample, or we can increase the number of features by calculating them over smaller chunks of song (for example every 3s, producing 10x as many features).
+
+These features can be input to a variety of traditional machine learning models like logistic regression, LSTM, or XGBoost. Specifically, XGBoost decided the following feature importances:
+
+| Weight | Feature |
+|:--------:|:-------:|:
+| 0.1055 | Percussive variance |
+| 0.0511 | Percussive mean |
+| 0.0474 | Harmonic mean |
+| 0.0356 | MFCC_4 mean |
+| 0.0332 | Chromagram mean |
+| 0.0262 | Harmonic variance |
+
+We also took each song and calculated spectrograms (graphical representations of music, with x-axis time, y-axis frequency, and value given by the amplitude of a particular frequency at a particular time). A number of different scale options are possible for the y-axis, including Linear (easiest to compute), Mel (standard in the literature, based on human perception), and Logarithmic (equal area given to each octave). Experimentation with settings found that logarithmic scaling lead to a 5-7% accuracy increase over mel-spectrograms, when input to a convolutional neural network, as more musical content can be resolved from the bass frequencies. In addition to CNNs, spectrograms can also be input to vision transformers, like Whisper.
+
+Finally, the raw audio signal can be supplied as input to deep learning models like WaveNet. Because a 30s sample of music contains 44,100 samples/sec * 30s = 1,323,000 data points, the songs were usually downsampled (usually to 16,000 samples/sec).
+
 
 ## Modeling Approach
 
@@ -66,6 +83,11 @@ Table: **boldened** values represent the overall best model for that dataset.
 
 ## Conclusions and Future Directions
 
+On GTZAN, XGBoost and Whisper Small emerged as the top-performing algorithms, each achieving an accuracy and F1 score of 0.92. However, on the FMA-small and FMA-medium datasets, Whisper Medium stood out, delivering an accuracy and F1 score of 0.63, outperforming all other models. Although these transformer-based methods resulted in the highest accuracy and F1 scores, this came at the expese of extreme computational cost, taking up to 3 days per epoch on a GPU to run Whisper Medium on FMA Medium. Additionally, it was clear that all the models were drastically overfitting on the training data (and the sheer number of models we tested managed to overfit the validation data as well).
+
+We further tested our algorithms in a practical scenario by addressing a contemporary debate: whether Beyoncé’s new album Cowboy Carter is actually a country album. Our answer is no - according to an ensemble of three models, only two tracks, “AMEN” and “SMOKE HOUR II” were classified as country. The majority of other songs were classified as pop and hip-hop.
+
+Our project encountered significant challenges, primarily concerning dataset quality. Genre classification was particularly difficult due to the multi-genre nature of many songs, and the fact that many songs in the datasets (FMA, specifically) appeared to be mis-lableled. We recommend prioritizing the acquisition or curation of higher-quality multi-genre datasets to enhance model performance. Future iterations will explore data augmentation techniques for both image and audio inputs, as well as the development of ensemble models to leverage the strengths of individual models. 
 
 ## Description of Repository
 
