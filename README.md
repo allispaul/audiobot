@@ -28,9 +28,8 @@ We use the librosa package to extract a variety of features from each track, inc
 
 These features can be input to a variety of traditional machine learning models like logistic regression, LSTM, or XGBoost. Specifically, XGBoost decided the following feature importances:
 
-**Feature Importance**
 | Weight | Feature |
-|:--------:|:-------:|:
+|:--------:|:-------:|
 | 0.1055 | Percussive variance |
 | 0.0511 | Percussive mean |
 | 0.0474 | Harmonic mean |
